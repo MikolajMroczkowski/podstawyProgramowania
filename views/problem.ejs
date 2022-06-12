@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <script src="js/autocomplete.js"></script>
+</head>
+<body>
+<div class="btnBox">
+    <a href="/">
+        <div class="closeBtn">
+            <i class="bi bi-box-arrow-left"></i>
+            <p>Wyloguj</p>
+        </div>
+    </a>
+    <br>
+    <a href="/">
+        <div class="closeBtn">
+            <i class="bi bi-house-door"></i>
+            <p>Home</p>
+        </div>
+    </a>
+</div>
+<main>
+    <div class="col">
+        <form method="post">
+            <h1>Dodaj punkt</h1>
+            <input type="text" size="30" onkeyup="showResult(this.value)" id="point" name="point">
+            <input type="hidden" name="problem" value="<%- problem %>">
+            <div id="livesearch"></div>
+            <p><input type="submit" value="Dodaj"></p>
+        </form>
+        <a href="/solve?id=<%- problem %>"><button>Rozwiąż Problem</button></a>
+    </div>
+    <div class="col">
+        <h1>Aktualne punkty</h1>
+        <% if(points){
+        for (var i = 0; i < points.length; i++) { %>
+            <div>
+                <a><%- points[i].point %></a>
+                <a href="/removePoint?id=<%- points[i].id %>&problem=<%- problem %>"><i class="bi bi-trash"></i></a>
+            </div>
+        <% }
+        } else{
+        %><p>Nie masz żadnych punktów</p><%
+        }%>
+    </div>
+</main>
+</body>
+</html>

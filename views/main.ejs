@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+<div class="btnBox">
+    <a href="/logout">
+        <div class="closeBtn">
+            <i class="bi bi-box-arrow-left"></i>
+            <p>Wyloguj</p>
+        </div>
+    </a>
+</div>
+<main>
+    <div class="col">
+        <form method="post">
+            <h1>Nowy problem</h1>
+            <input placeholder="nazwa" name="name">
+            <p><input type="submit"></p>
+            <p><%- error %></p>
+        </form>
+    </div>
+    <div class="col">
+        <h1>Moje problemy</h1>
+        <% if(problems){
+        for (var i = 0; i < problems.length; i++) { %>
+            <div>
+                <a href="/problem?id=<%- problems[i].uuid %>"><%- problems[i].name %></a>
+                <a href="/removeProblem?id=<%- problems[i].uuid %>"><i class="bi bi-trash"></i></a>
+            </div>
+        <% }
+        } else{
+            %><p>Nie masz żadnych problemów</p><%
+        }%>
+    </div>
+</main>
+</body>
+</html>
