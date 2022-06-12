@@ -1,0 +1,9 @@
+{
+  "google": {
+    "key": ""
+  },
+  "db": {
+    "connStr": "./db/main.db",
+    "example": "./db/dbexample.sql"
+  }
+}
